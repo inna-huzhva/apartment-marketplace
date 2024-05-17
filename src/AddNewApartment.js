@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NewApartment from "./NewApartment";
+import "./addNewApartment.scss";
 
 function AddNewApartment() {
   const [openModal, setOpenModal] = useState(false);
@@ -12,7 +13,8 @@ function AddNewApartment() {
           setOpenModal(true);
         }}
       >
-        Add new apartment
+        <span class="plus-sign">＋ </span>
+        Add apartment
       </button>
       {openModal && <NewApartment closeModal={() => setOpenModal(false)} />}
     </>

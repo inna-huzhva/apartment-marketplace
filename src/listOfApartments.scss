@@ -1,11 +1,15 @@
 .apartment-item {
   background-color: #f6f6f6;
   margin: 15px 0;
-  padding: 15px;
-  display: flex;
   justify-content: space-between;
 
+  @media screen and (min-width: 700px) {
+    display: flex;
+  }
+
   .apartment-info {
+    padding: 15px;
+
     .list-header {
       .price {
         font-size: 25px;
@@ -32,13 +36,45 @@
     .description {
       font-size: 15px;
       margin-top: 10px;
+      text-align: justify;
     }
   }
 
-  button {
-    width: 70px;
-    height: 30px;
-    margin: 12px 0;
-    cursor: pointer;
+  .actions {
+    text-align: right;
+    padding: 0 15px 15px;
+
+    @media screen and (min-width: 700px) {
+      padding: 15px;
+    }
+
+    button {
+      background-color: #dadada;
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+
+      &:hover {
+        background-color: #ed9999;
+      }
+
+      img {
+        display: none;
+      }
+
+      @media screen and (min-width: 700px) {
+        font-size: 0;
+        padding: 10px;
+
+        img {
+          display: inline;
+        }
+
+        span {
+          display: none;
+        }
+      }
+    }
   }
 }

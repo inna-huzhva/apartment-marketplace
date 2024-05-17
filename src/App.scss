@@ -1,11 +1,23 @@
 .app {
   max-width: 900px;
-  height: 100vh;
+  min-height: 100vh;
   background-color: #fff;
   margin: auto;
-  padding: 40px 50px;
+  padding: 10px 10px;
+
+  @media screen and (min-width: 800px) {
+    padding: 40px 50px;
+  }
 
   .header {
     font-size: 40px;
+  }
+
+  .action-panel {
+    margin: 10px 0;
+
+    @media screen and (min-width: 700px) {
+      margin: 20px 0;
+    }
   }
 }
