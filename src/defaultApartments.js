@@ -1,4 +1,4 @@
-export const apartments = [
+const apartments = [
   {
     name: "Alex Apartments near Independence Square",
     rooms: 1,
@@ -27,3 +27,5 @@ export const apartments = [
     description: "",
   },
 ];
+
+export default apartments;

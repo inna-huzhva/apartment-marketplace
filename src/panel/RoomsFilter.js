@@ -1,7 +1,7 @@
 function RoomsFilter({ options, selectedFilter, setSelectedFilter }) {
   return (
     <div className="rooms-filter">
-      <label htmlFor="filter">Amount of rooms: </label>
+      <label htmlFor="filter">Number of rooms: </label>
       <select
         id="filter"
         value={selectedFilter}

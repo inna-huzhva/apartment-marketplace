@@ -3,12 +3,14 @@ import AddNewApartment from "./panel/AddNewApartment.js";
 import ListOfApartments from "./ListOfApartments";
 import RoomsFilter from "./panel/RoomsFilter.js";
 import PriceSorting from "./panel/PriceSorting.js";
-import { apartments } from "./apartments.js";
+import { useApi } from "./localStorageApi.js";
 import "./app.scss";
 
 function App() {
   const [roomsFilter, setRoomsFilter] = useState("any");
   const [priceSorting, setPriceSorting] = useState("asc");
+  const api = useApi();
+  const apartments = api.getApartments();
 
   const filtered =
     roomsFilter === "any"
@@ -23,11 +25,14 @@ function App() {
     .sort((a, b) => a - b)
     .filter((x, i, a) => a.indexOf(x) === i);
 
+  const availableApartments = filtered.length;
+
   return (
     <div className="app">
       <div className="header">Apartments marketplace</div>
+      <div>Available Apartments: {availableApartments}</div>
       <div className="action-panel">
-        <AddNewApartment />
+        <AddNewApartment addApartment={api.addApartment} />
         <PriceSorting
           priceSorting={priceSorting}
           setPriceSorting={setPriceSorting}
@@ -38,7 +43,10 @@ function App() {
           setSelectedFilter={setRoomsFilter}
         />
       </div>
-      <ListOfApartments apartments={sorted} />
+      <ListOfApartments
+        apartments={sorted}
+        deleteApartment={api.deleteApartment}
+      />
     </div>
   );
 }

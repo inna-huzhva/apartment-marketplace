@@ -44,9 +44,14 @@
           textarea {
             width: 100%;
             padding: 8px;
-            font-size: 20px;
+            font-size: 15px;
             min-height: 215px;
             resize: none;
+          }
+
+          .error {
+            font-size: 14px;
+            color: #da5050;
           }
         }
       }
@@ -71,6 +76,11 @@
 
           &:hover {
             background-color: #308ae4;
+          }
+
+          &:disabled {
+            background-color: #515151;
+            cursor: not-allowed;
           }
         }
 

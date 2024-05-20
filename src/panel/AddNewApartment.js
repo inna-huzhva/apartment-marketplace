@@ -1,7 +1,7 @@
 import { useState } from "react";
-import NewApartment from "../NewApartment";
+import NewApartment from "./NewApartment";
 
-function AddNewApartment() {
+function AddNewApartment({ addApartment }) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -15,7 +15,12 @@ function AddNewApartment() {
         <span className="plus-sign">＋ </span>
         Add apartment
       </button>
-      {openModal && <NewApartment closeModal={() => setOpenModal(false)} />}
+      {openModal && (
+        <NewApartment
+          closeModal={() => setOpenModal(false)}
+          addApartment={addApartment}
+        />
+      )}
     </>
   );
 }

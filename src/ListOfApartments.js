@@ -1,6 +1,6 @@
 import "./listOfApartments.scss";
 
-function ListOfApartments({ apartments }) {
+function ListOfApartments({ apartments, deleteApartment }) {
   return apartments.map((a) => {
     return (
       <div className="apartment-item" key={a.name}>
@@ -13,7 +13,7 @@ function ListOfApartments({ apartments }) {
           {a.description && <div className="description">{a.description}</div>}
         </div>
         <div className="actions">
-          <button>
+          <button onClick={() => deleteApartment(a)}>
             <img src="./delete-icon.svg" alt="delete" width={19} height={19} />
             <span>Delete</span>
           </button>
