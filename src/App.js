@@ -25,12 +25,10 @@ function App() {
     .sort((a, b) => a - b)
     .filter((x, i, a) => a.indexOf(x) === i);
 
-  const availableApartments = filtered.length;
-
   return (
     <div className="app">
       <div className="header">Apartments marketplace</div>
-      <div>Available Apartments: {availableApartments}</div>
+      <div>Total available apartments: {apartments.length}</div>
       <div className="action-panel">
         <AddNewApartment addApartment={api.addApartment} />
         <PriceSorting
