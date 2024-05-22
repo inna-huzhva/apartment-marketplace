@@ -10,6 +10,8 @@ import "./app.scss";
 function App() {
   const [roomsFilter, setRoomsFilter] = useState("any");
   const [priceSorting, setPriceSorting] = useState("asc");
+  const [reload, setReload] = useState(true);
+  const refresh = () => setReload((r) => !r);
   const [[loadingStatus, loadingError, apartments], setLoadingResult] =
     useState(["LOADING", undefined, undefined]);
   const localStorageApi = useLocalStorageApi();
@@ -22,7 +24,7 @@ function App() {
         setLoadingResult(["SUCCESS", undefined, apartments]),
       )
       .catch((err) => setLoadingResult(["ERROR", err.message, undefined]));
-  }, [priceSorting, roomsFilter]);
+  }, [priceSorting, roomsFilter, reload]);
 
   return (
     <div className="app">
@@ -35,7 +37,10 @@ function App() {
         <>
           <div>Available apartments: {apartments.length}</div>
           <div className="action-panel">
-            <AddNewApartment addApartment={localStorageApi.addApartment} />
+            <AddNewApartment
+              addApartment={realApi.addApartment}
+              refreshApartments={refresh}
+            />
             <PriceSorting
               priceSorting={priceSorting}
               setPriceSorting={setPriceSorting}
@@ -47,7 +52,7 @@ function App() {
           </div>
           <ListOfApartments
             apartments={apartments}
-            deleteApartment={localStorageApi.deleteApartment}
+            deleteApartment={realApi.deleteApartment}
           />
         </>
       )}

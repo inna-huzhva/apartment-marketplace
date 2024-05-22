@@ -1,7 +1,7 @@
 import { useState } from "react";
 import NewApartment from "./NewApartment";
 
-function AddNewApartment({ addApartment }) {
+function AddNewApartment({ addApartment, refreshApartments }) {
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -19,6 +19,7 @@ function AddNewApartment({ addApartment }) {
         <NewApartment
           closeModal={() => setOpenModal(false)}
           addApartment={addApartment}
+          refreshApartments={refreshApartments}
         />
       )}
     </>

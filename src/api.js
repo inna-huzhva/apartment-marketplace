@@ -12,7 +12,7 @@ export function getApartments(priceSorting, roomsFilter) {
 }
 
 export function addApartment(newApartment) {
-  return fetch(`/apartments`, {
+  return fetch("/apartments", {
     method: "POST",
     headers: {
       "Content-type": "application/json; charset=UTF-8",

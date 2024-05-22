@@ -11,11 +11,15 @@ const shouldBeValidName = (name) =>
 const shouldBePositive = (n) =>
   !/^\d+$/.test(n) || Number(n) <= 0 ? "Should be 1 or more" : undefined;
 
-function NewApartment({ closeModal, addApartment }) {
+function NewApartment({ closeModal, addApartment, refreshApartments }) {
   const [name, setName] = useState("");
   const [rooms, setRooms] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
+  const [[requestStatus, requestError], setRequestResult] = useState([
+    "NOT-SEND",
+    undefined,
+  ]);
 
   const nameError = shouldBeValidName(name);
   const roomsError = shouldBePositive(rooms);
@@ -23,13 +27,18 @@ function NewApartment({ closeModal, addApartment }) {
   const hasErrors = nameError || roomsError || priceError;
 
   const publish = () => {
+    setRequestResult(["SENT", undefined]);
     addApartment({
       name,
       rooms: Number(rooms),
       price: Number(price),
       description,
-    });
-    closeModal();
+    })
+      .then((newApartment) => {
+        closeModal();
+        refreshApartments(newApartment);
+      })
+      .catch((err) => setRequestResult(["ERROR", err.message]));
   };
 
   return (
@@ -100,12 +109,26 @@ function NewApartment({ closeModal, addApartment }) {
           </div>
         </div>
         <div className="buttons">
-          <button className="publish" disabled={hasErrors} onClick={publish}>
-            Publish
-          </button>
-          <button className="cancel" onClick={closeModal}>
-            Cancel
-          </button>
+          {requestStatus === "ERROR" && (
+            <div className="loading-error">{requestError}</div>
+          )}
+          {requestStatus === "SENT" && (
+            <div className="loader">Sending request...</div>
+          )}
+          {requestStatus !== "SENT" && (
+            <div>
+              <button
+                className="publish"
+                disabled={hasErrors}
+                onClick={publish}
+              >
+                Publish
+              </button>
+              <button className="cancel" onClick={closeModal}>
+                Cancel
+              </button>
+            </div>
+          )}
         </div>
       </form>
     </div>
