@@ -1,0 +1,10 @@
+{
+  "name": "apartment-marketplace-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "express": "^4.19.2",
+    "sqlite": "^5.1.1"
+  }
+}

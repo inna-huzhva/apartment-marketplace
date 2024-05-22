@@ -1,4 +1,4 @@
-function RoomsFilter({ options, selectedFilter, setSelectedFilter }) {
+function RoomsFilter({ selectedFilter, setSelectedFilter }) {
   return (
     <div className="rooms-filter">
       <label htmlFor="filter">Number of rooms: </label>
@@ -10,11 +10,10 @@ function RoomsFilter({ options, selectedFilter, setSelectedFilter }) {
         }}
       >
         <option value="any">Any</option>
-        {options.map((o) => (
-          <option value={o} key={o}>
-            {o}
-          </option>
-        ))}
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4+">4+</option>
       </select>
     </div>
   );
