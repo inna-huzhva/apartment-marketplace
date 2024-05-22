@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 
+apartments.db
+
 # testing
 /coverage
 

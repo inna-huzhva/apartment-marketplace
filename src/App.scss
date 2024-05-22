@@ -9,8 +9,31 @@
     padding: 40px 50px;
   }
 
+  .api-selector {
+    line-height: 34px;
+    font-size: 20px;
+    text-align: right;
+
+    .type {
+      margin-right: 15px;
+    }
+  }
+
   .header {
     font-size: 40px;
+  }
+
+  .loader {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+
+  .loading-error {
+    background-color: #ffdede;
+    color: #803030;
+    font-size: 24px;
+    margin: 10px 0;
+    padding: 10px 15px;
   }
 
   .action-panel {
