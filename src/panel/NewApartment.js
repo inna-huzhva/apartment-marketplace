@@ -34,9 +34,9 @@ function NewApartment({ closeModal, addApartment, refreshApartments }) {
       price: Number(price),
       description,
     })
-      .then((newApartment) => {
+      .then(() => {
         closeModal();
-        refreshApartments(newApartment);
+        refreshApartments();
       })
       .catch((err) => setRequestResult(["ERROR", err.message]));
   };

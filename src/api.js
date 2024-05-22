@@ -20,7 +20,7 @@ export function addApartment(newApartment) {
     body: JSON.stringify(newApartment),
   }).then((res) => {
     if (res.ok) return res.json();
-    else throw Error(res.statusText);
+    else throw Error(res.status + " " + res.statusText);
   });
 }
 
@@ -28,7 +28,7 @@ export function deleteApartment(apartment) {
   return fetch(`/apartments/${apartment.id}`, {
     method: "DELETE",
   }).then((res) => {
-    if (res.ok) return res.json();
-    else throw Error(res.statusText);
+    if (res.ok) return;
+    else throw Error(res.status + " " + res.statusText);
   });
 }

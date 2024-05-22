@@ -27,3 +27,7 @@ export function addApartment(newApartment) {
   apartments = [...apartments, newApartment];
   return newApartment;
 }
+
+export function deleteApartment(apartmentId) {
+  apartments = apartments.filter((a) => a.id !== apartmentId);
+}

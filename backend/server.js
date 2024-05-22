@@ -1,5 +1,9 @@
 import express from "express";
-import { getApartments, addApartment } from "./apartmentsService.js";
+import {
+  getApartments,
+  addApartment,
+  deleteApartment,
+} from "./apartmentsService.js";
 
 const app = express();
 const port = 6000;
@@ -12,6 +16,10 @@ app.get("/apartments", (req, res) => {
 
 app.post("/apartments", express.json(), (req, res) => {
   res.json(addApartment(req.body));
+});
+
+app.delete("/apartments/:id", (req, res) => {
+  res.json(deleteApartment(req.params.id));
 });
 
 app.listen(port, () => {

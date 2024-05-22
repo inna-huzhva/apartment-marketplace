@@ -53,6 +53,7 @@ function App() {
           <ListOfApartments
             apartments={apartments}
             deleteApartment={realApi.deleteApartment}
+            refreshApartments={refresh}
           />
         </>
       )}
